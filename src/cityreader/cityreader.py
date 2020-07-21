@@ -52,6 +52,7 @@ cityreader(cities)
 for c in cities:
     print(c)
 
+"""
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
@@ -91,3 +92,4 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # the specified coordinates.
 
   return within
+"""
