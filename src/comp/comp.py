@@ -28,7 +28,7 @@ print("\nStarts with D:")
 a = []
 for human in humans:
     if human.name[0].lower() == 'd': #making sure check is not case sensitive against original list. 
-        a.append(human)
+        a.append(human.name)
 
 print(a)
 
@@ -39,7 +39,7 @@ print("\nEnds with e:")
 b = []
 for human in humans:
     if human.name[-1].lower() == 'e':
-        b.append(human)
+        b.append(human.name)
 
 print(b)
 
@@ -52,7 +52,7 @@ chars = [chr(i) for i in range(ord('c'), ord('g')+1)]
 c = []
 for human in humans:
     if human.name[0].lower() in chars:
-        c.append(human) 
+        c.append(human.name) 
 
 print(c)
 
@@ -83,7 +83,7 @@ print("\nNames and ages between 27 and 32:")
 f = []
 for human in humans:
     if human.age in range(27, 33):
-        f.append(human)
+        f.append((human.name, human.age))
 
 print(f)
 
@@ -94,7 +94,7 @@ print("\nAll names uppercase:")
 
 g = []
 for human in humans:
-    g.append(f'{human.name.upper()}, {(human.age + 5)}')
+    g.append(Human(human.name.upper(), (human.age + 5)))
 
 print(g)
 
