@@ -52,7 +52,7 @@ cityreader(cities)
 for c in cities:
     print(c)
 
-"""
+
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
@@ -83,13 +83,17 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+#* If city lat and lon falls in lat1 and lon1...include in within.
+# * also if city lat and lon falls in lat2 and lon2...include in within 
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+  #define where data is coming from...same as above function...import csv and with open ...
+
   # within will hold the cities that fall within the specified region
   within = []
   
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
+  #...loop through lats ans lons and add all in ranges to the 'within' list.
 
   return within
-"""
