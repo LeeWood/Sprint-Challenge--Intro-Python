@@ -1,5 +1,12 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
+class City:
+    def __init__(self, name, lat, lon):
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+    def __str__(self):
+        return f'{self.name}, {self.lat}, {self.lon}' 
 
 
 # We have a collection of US cities with population over 750,000 stored in the
@@ -14,11 +21,26 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
+# with open(r'C:\Users\Aleesha\LAMBDA_PROJECTS\SPRINTS\Sprint-Challenge--Intro-Python\src\cityreader\cities.csv', 'r') as file:
+#     reader = csv.reader(file)
+#     for row in reader: 
+#         print(row)
+
 cities = []
 
 def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # Ensure that the lat and lon valuse are all floats
+    import csv
+
+    with open(r'C:\Users\Aleesha\LAMBDA_PROJECTS\SPRINTS\Sprint-Challenge--Intro-Python\src\cityreader\cities.csv', 'r') as csvFile:
+        reader = csv.reader(csvFile)
+        next(reader, None)
+        
+        for row in reader:
+            #print(City(row[0], row[3], row[4]))
+            cities.append(City(row[0], float(row[3]), float(row[4])))
+
+  # Ensure that the lat and lon values are all floats
   # For each city record, create a new City instance and add it to the 
   # `cities` list
     
@@ -27,8 +49,9 @@ def cityreader(cities=[]):
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
-for c in cities:
-    print(c)
+# for c in cities:
+#     print(c)
+
 
 # STRETCH GOAL!
 #
@@ -60,12 +83,42 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+#* If city lat and lon falls in lat1 and lon1...include in within.
+# * also if city lat and lon falls in lat2 and lon2...include in within 
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities=cities):
   within = []
+
+  lats = [lat1, lat2]
+  lons = [lon1, lon2]
   
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+  for c in cities:
+      if min(lats) <= c.lat <= max(lats) and min(lons) <= c.lon <= max(lons):
+          within.append(c)
+          print(c.name, c.lat, c.lon)
 
   return within
+
+#cityreader_stretch(45, -100, 32, -120)  
+
+def cityreader_stretch_pt2(cities=cities):
+  within = []
+
+  lat1 = float(input("Frist Latitude: "))
+  lon1 = float(input("First Longitude: "))
+  lat2 = float(input("Second Latitude: "))
+  lon2 = float(input("Second Longitude: "))
+
+
+  lats = [lat1, lat2]
+  lons = [lon1, lon2]
+  
+  for c in cities:
+      if min(lats) <= c.lat <= max(lats) and min(lons) <= c.lon <= max(lons):
+          within.append(c)
+          print(c.name, c.lat, c.lon)
+
+  return within
+
+#cityreader_stretch_pt2()
+
