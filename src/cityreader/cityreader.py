@@ -49,8 +49,8 @@ def cityreader(cities=[]):
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
-for c in cities:
-    print(c)
+# for c in cities:
+#     print(c)
 
 
 # STRETCH GOAL!
@@ -86,14 +86,39 @@ for c in cities:
 #* If city lat and lon falls in lat1 and lon1...include in within.
 # * also if city lat and lon falls in lat2 and lon2...include in within 
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  #define where data is coming from...same as above function...import csv and with open ...
-
-  # within will hold the cities that fall within the specified region
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities=cities):
   within = []
+
+  lats = [lat1, lat2]
+  lons = [lon1, lon2]
   
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
-  #...loop through lats ans lons and add all in ranges to the 'within' list.
+  for c in cities:
+      if min(lats) <= c.lat <= max(lats) and min(lons) <= c.lon <= max(lons):
+          within.append(c)
+          print(c.name, c.lat, c.lon)
 
   return within
+
+#cityreader_stretch(45, -100, 32, -120)  
+
+def cityreader_stretch_pt2(cities=cities):
+  within = []
+
+  lat1 = float(input("Frist Latitude: "))
+  lon1 = float(input("First Longitude: "))
+  lat2 = float(input("Second Latitude: "))
+  lon2 = float(input("Second Longitude: "))
+
+
+  lats = [lat1, lat2]
+  lons = [lon1, lon2]
+  
+  for c in cities:
+      if min(lats) <= c.lat <= max(lats) and min(lons) <= c.lon <= max(lons):
+          within.append(c)
+          print(c.name, c.lat, c.lon)
+
+  return within
+
+#cityreader_stretch_pt2()
+
